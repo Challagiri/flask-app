@@ -19,5 +19,21 @@ pipeline {
                 '''
             }
         }
+
+        stage('docker-build') {
+            steps {
+                sh '''
+                docker build -t challagiri/flask-app:latest .
+                '''
+            }
+        }
+
+        stage('docker-push') {
+            steps {
+                sh '''
+                docker push challagiri/flask-app:latest
+                '''
+            }
+        }
     }
 }
